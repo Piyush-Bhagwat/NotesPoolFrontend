@@ -1,0 +1,80 @@
+.upload-form{
+    display: inline-flex;
+    flex-direction: column;
+    height: 70vh;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.file-select{
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.form-container{
+    text-align: center;
+}
+
+#label-file-select{
+    height: 10vh;
+    width: 60vw;
+    border-radius: 10px;
+    padding: 20px;
+    border: 4px dashed gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.3s;
+}
+
+#label-file-select.drag-active{
+   border-color: rgb(67, 255, 67);
+   background-color: rgb(239, 255, 239);
+}
+
+#drag-file-element {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
+
+.upload-form select{
+    display: inline-block;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.upload-form .tag-upload{
+    display: inline-block;
+    width: 40%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.btn{
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 21px;
+    border: 1px solid black;
+    background: none;
+}
+
+.cls-tag-container{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.cls-tag-container div{
+    text-align: center;
+    width: 50%;
+}
