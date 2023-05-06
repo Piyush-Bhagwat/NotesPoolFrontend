@@ -39,6 +39,7 @@ const HomePage = () => {
                                 key={note.id}
                                 id={note.id}
                                 link={note.link}
+                                format={note.format}
                             />
                         );
                     }

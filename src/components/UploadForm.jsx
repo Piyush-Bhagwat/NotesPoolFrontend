@@ -11,10 +11,11 @@ const UploadForm = () => {
         file: false,
         class: "BCA_1",
         subject: false,
-        tags: "",
+        fileName: "",
+        format: "",
     });
 
-    const {user, bPORT} = useContext(noteContext);
+    const { user, bPORT } = useContext(noteContext);
 
     const renderClassOptions = () => {
         return (
@@ -40,10 +41,10 @@ const UploadForm = () => {
         console.log(curClass);
         return (
             <select
-            name="subject"
-            id="subject"
-            onChange={onChangeHandler}
-            value={data.subject}
+                name="subject"
+                id="subject"
+                onChange={onChangeHandler}
+                value={data.subject}
             >
                 <option>Select</option>
                 {curClass.subjects.map((sub, id) => {
@@ -62,16 +63,22 @@ const UploadForm = () => {
 
         const form = new formData();
 
+        if (data.fileName.split(".").pop() !== data.format) {
+            console.log("HEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEH");
+            form.append("fileName", data.fileName + "." + data.format);
+        } else {
+            form.append("fileName", data.fileName);
+        }
         form.append("data", data.file[0]);
         form.append("class", data.class);
-        form.append("tags", data.tags);
         form.append("subject", data.subject);
         form.append("name", user.name);
         form.append("uid", user.uid);
+        form.append("format", data.format);
 
         axios.post(`${bPORT}/api/newpost`, form);
 
-        setData({ file: false, class: "BCA_1",subject: false, tags: "" });
+        setData({ file: false, class: "BCA_1", subject: false, fileName: "" });
     };
 
     let name, value;
@@ -117,7 +124,21 @@ const UploadForm = () => {
         if (e.target.files && e.target.files[0]) {
             // at least one file has been selected so do something
             // handleFiles(e.target.files);
-            setData({ ...data, file: e.target.files });
+
+            if (data.fileName === "") {
+                setData({
+                    ...data,
+                    file: e.target.files,
+                    fileName: e.target.files[0].name,
+                    format: e.target.files[0].name.split(".").pop(),
+                });
+            } else {
+                setData({
+                    ...data,
+                    file: e.target.files,
+                    format: e.target.files[0].name.split(".").pop(),
+                });
+            }
         }
     };
 
@@ -172,14 +193,14 @@ const UploadForm = () => {
                 </div>
 
                 <div>
-                    <label htmlFor="tags">Tags: </label>
+                    <label htmlFor="tags">File Name: </label>
                     <input
-                        className="tag-upload"
+                        className="name-upload"
                         type="text"
                         onChange={onChangeHandler}
-                        value={data.tags}
-                        name="tags"
-                        id="tags"
+                        value={data.fileName}
+                        name="fileName"
+                        id="fileName"
                     />
                 </div>
             </div>

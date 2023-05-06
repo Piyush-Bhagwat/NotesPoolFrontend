@@ -1,17 +1,14 @@
 import React, { useContext } from "react";
-import pdfIcon from "../assets/icons/pdf.webp";
-import axios from "axios";
-import { saveAs } from "file-saver";
 import { noteContext } from "../context/noteContext";
+import FileIcon from "./fileIcon";
 
-const BacisCardList = ({ name, by, on, id }) => {
-    
-    const {bPORT} = useContext(noteContext);
+const BacisCardList = ({ name, by, on, id, format }) => {
+    const { bPORT } = useContext(noteContext);
 
     return (
         <div className="note-li">
             <div className="title">
-                <img src={pdfIcon} alt="" />
+                <FileIcon type={format} />
                 <p>{name}</p>
             </div>
 

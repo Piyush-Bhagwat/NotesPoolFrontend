@@ -1,6 +1,4 @@
 import React, { createContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
 export const noteContext = createContext(null);
 
 export default function NoteContextProvider(props) {
