@@ -46,9 +46,15 @@
 
 .upload-form select{
     display: inline-block;
+    background-color: #222831;
     width: fit-content;
     padding: 5px 10px;
     border-radius: 5px;
+}
+
+.upload-form input{
+    background-color: #222831;
+    border: 1px solid #fff;
 }
 
 .upload-form .tag-upload{
