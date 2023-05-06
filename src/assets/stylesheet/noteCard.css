@@ -58,6 +58,7 @@
 }
 
 @media screen and (max-width: 550px) {
+    
     .note-li{
         width: 100%;
         height: 15vh;
