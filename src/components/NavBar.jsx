@@ -68,7 +68,7 @@ const NavBar = () => {
         <div className="nav-bar">
             <p className="brand-name">Notes Pool</p>
 
-            <div className="subject-select-container">
+            <div className="subject-select-container desktop">
                 {renderClassOptions()}
                 {renderSubjectOption()}
             </div>

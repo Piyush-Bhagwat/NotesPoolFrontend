@@ -1,14 +1,40 @@
 .notes{
-    padding: 3% 7%;
-    padding-top: 7%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
+.home-page{
+    padding: 3% 7%;
+    padding-top: 6%;
+}   
+
+.subject-select{
+    padding: 3px 6px;
+    margin: 10px 10px;
+    border-radius: 5px;
+    background-color: #393E46;
+}
+
 @media screen and (max-width: 550px) {
-    .notes{
+    .home-page{
         padding-top: 26%;
+    
+    } 
+
+    select{
+        font-size: 0.6em;
+        width: 40vw;
     }
+
+    .subject-select-container{
+        position:fixed;
+        top: 8%;
+    }
+
+    .notes{
+        flex-direction: column;
+    }
+
 }

@@ -12,3 +12,30 @@
     background-color: #222831;
     height: 100vh;
 }
+
+.desktop{
+    visibility: visible;
+    pointer-events: all;
+    position: relative;
+}
+
+.mobile{
+    visibility: hidden;
+    pointer-events: none;
+    position: fixed;
+}
+
+@media screen and (max-width: 550px) {
+    .desktop{
+        visibility: hidden;
+        pointer-events: none;
+        position: fixed;
+    }
+    
+    .mobile{
+        visibility: visible;
+        pointer-events: all;
+        position: relative;
+    }
+    
+}
