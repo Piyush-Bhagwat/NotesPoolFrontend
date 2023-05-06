@@ -10,7 +10,7 @@ export default function NoteContextProvider(props) {
     const globalHost = "https://notepool-backend.onrender.com";
     const localHost = "http://localhost:4040";
 
-    const bPORT = localHost;
+    const bPORT = globalHost;
 
     useEffect(() => {
         if (localStorage.getItem("name")) {
