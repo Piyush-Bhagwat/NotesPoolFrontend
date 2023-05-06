@@ -5,6 +5,14 @@
     flex-wrap: wrap;
 }
 
+.loader{
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .home-page{
     padding: 3% 7%;
     padding-top: 6%;

@@ -4,9 +4,11 @@ import axios from "axios";
 import BacisCardList from "../../components/noteCard";
 import { noteContext } from "../../context/noteContext";
 import subjectList from "../../data/classSubjectList";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 const HomePage = () => {
     const [notesData, setNotesData] = useState([]);
+    const [loading, setLoading] = useState(true);
     const {
         curSubject,
         setCurSubject,
@@ -20,6 +22,7 @@ const HomePage = () => {
         console.log(classOption, curSubject);
         const getData = async () => {
             var data;
+            setLoading(true);
             await axios
                 .get(
                     `${bPORT}/api/getdata?cls=${classOption}&subject=${curSubject}`
@@ -28,7 +31,7 @@ const HomePage = () => {
                     data = dat.data;
                 });
             setNotesData(data);
-            console.log(data);
+            setLoading(false);
         };
         getData();
     }, [classOption, curSubject]);
@@ -103,7 +106,9 @@ const HomePage = () => {
                 {renderClassOptions()}
                 {renderSubjectOption()}
             </div>
-            <div className="notes">{renderNotes()}</div>
+
+            
+            <div className="notes">{loading ? <div className="loader"> <PropagateLoader size="15" color="#FFD369" loading={loading}/> </div> : renderNotes()}</div>
         </div>
     );
 };
