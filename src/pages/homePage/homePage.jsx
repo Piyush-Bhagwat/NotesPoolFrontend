@@ -13,7 +13,6 @@ const HomePage = () => {
         classOption,
         setClassOption,
         user,
-        logOut,
         bPORT
     } = useContext(noteContext);
 

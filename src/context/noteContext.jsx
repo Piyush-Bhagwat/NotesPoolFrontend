@@ -1,4 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+
 export const noteContext = createContext(null);
 
 export default function NoteContextProvider(props) {
@@ -12,7 +14,7 @@ export default function NoteContextProvider(props) {
 
     const bPORT = globalHost;
 
-    const toastSettings =  {
+    const toastSettings = {
         position: "bottom-left",
         autoClose: 4000,
         hideProgressBar: false,
@@ -33,6 +35,8 @@ export default function NoteContextProvider(props) {
                 isLoged: true,
             };
             setUser(userInfo);
+        } else {
+            toast.info(`Login to Upload`, toastSettings);
         }
     }, []);
 
@@ -44,7 +48,7 @@ export default function NoteContextProvider(props) {
         localStorage.removeItem("uid");
         localStorage.removeItem("dpURL");
         window.location = "/";
-    }
+    };
 
     const contextValue = {
         classOption,
@@ -54,12 +58,13 @@ export default function NoteContextProvider(props) {
         user,
         bPORT,
         logOut,
-        toastSettings
+        toastSettings,
     };
 
     return (
         <noteContext.Provider value={contextValue}>
             {props.children}
+            <ToastContainer />
         </noteContext.Provider>
     );
 }
