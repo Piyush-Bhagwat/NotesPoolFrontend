@@ -10,19 +10,19 @@ import UploadPage from "./pages/UploadPage/UploadPage";
 
 function App() {
     return (
-        <NoteContextProvider>
-            <Router>
-                <NavBar />
+        <div className="body">
+            <NoteContextProvider>
+                <Router>
+                    <NavBar />
 
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/upload" element={<UploadPage />} />
-                  <Route path="/adminpi" element={<AdminPage />} />
-                </Routes>
-
-            </Router>
-
-        </NoteContextProvider>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/upload" element={<UploadPage />} />
+                        <Route path="/adminpi" element={<AdminPage />} />
+                    </Routes>
+                </Router>
+            </NoteContextProvider>
+        </div>
     );
 }
 

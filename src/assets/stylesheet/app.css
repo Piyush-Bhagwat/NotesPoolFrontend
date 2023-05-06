@@ -5,82 +5,10 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    color: #F1F6F9;
 }
 
-.nav-bar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2% 7%;
-}
-
-.quickicons{
-    width: 15%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.quickicons a{
-    color: black;
-    text-decoration: none;
-}
-
-.quickicons i{
-    font-size: 1.5em;
-    margin-left:5px;
-}
-
-.quickicons button{
-    background: none;
-    border: none;
-}
-
-.profile-pic{
-    width: 2.5em;
-    border-radius: 50%;
-}
-
-.subject-select{
-    padding: 3px 6px;
-    border-radius: 5px;
-}
-
-.ctrl-btn{
-    visibility: hidden;
-    pointer-events: none;
-    background: none;
-    border: none;
-}
-
-@media screen and (max-width: 550px){
-    .ctrl-btn{
-        visibility: visible;
-        pointer-events: all;
-    }
-
-    .quickicons{
-        position: fixed;
-        flex-direction: column;
-        top: 10%;
-        right: -21%;
-        height: 36vh;
-        width: 30vw;
-        padding: 4%;
-        align-items: center;
-        transition: 0.3s ease;
-        backdrop-filter: blur(4px);
-    }
-
-    .links-active{
-        right: 0;
-    }
-
-    .ctrl-btn i{
-        font-size: 1.5em;
-    }
-
-    select{
-        font-size: 0.6em;
-        width: 40vw;
-    }
+.body{
+    background-color: #222831;
+    height: 100vh;
 }

@@ -4,6 +4,8 @@ import { noteContext } from "../context/noteContext";
 import { loginToGoogle } from "../data/firebase.js";
 import { Link } from "react-router-dom";
 
+import "../assets/stylesheet/navBar.css";
+
 const NavBar = () => {
     const {
         curSubject,
@@ -55,12 +57,12 @@ const NavBar = () => {
         );
     };
 
-    const toogleNav = ()=>{
-        const navLinks = document.getElementById('links');
+    const toogleNav = () => {
+        const navLinks = document.getElementById("links");
         console.log(navLinks);
 
-        navLinks.classList.toggle('links-active');
-    }
+        navLinks.classList.toggle("links-active");
+    };
 
     return (
         <div className="nav-bar">
