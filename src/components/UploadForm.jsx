@@ -64,7 +64,6 @@ const UploadForm = () => {
         const form = new formData();
 
         if (data.fileName.split(".").pop() !== data.format) {
-            console.log("HEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEH");
             form.append("fileName", data.fileName + "." + data.format);
         } else {
             form.append("fileName", data.fileName);
@@ -172,7 +171,7 @@ const UploadForm = () => {
                 {data.file ? (
                     <p>File Selected {data.file[0].name}</p>
                 ) : (
-                    <p>Drag and drop your file here</p>
+                    <p>Drag your file here or Click to select</p>
                 )}
             </label>
             {dragActive && (

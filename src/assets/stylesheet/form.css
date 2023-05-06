@@ -1,4 +1,4 @@
-.upload-form{
+.upload-form {
     display: inline-flex;
     flex-direction: column;
     height: 70vh;
@@ -6,16 +6,16 @@
     justify-content: space-around;
 }
 
-.file-select{
+.file-select {
     visibility: hidden;
     pointer-events: none;
 }
 
-.form-container{
+.form-container {
     text-align: center;
 }
 
-#label-file-select{
+#label-file-select {
     height: 10vh;
     width: 60vw;
     border-radius: 10px;
@@ -28,9 +28,9 @@
     transition: 0.3s;
 }
 
-#label-file-select.drag-active{
-   border-color: rgb(67, 255, 67);
-   background-color: rgb(239, 255, 239);
+#label-file-select.drag-active {
+    border-color: rgb(67, 255, 67);
+    background-color: rgb(239, 255, 239);
 }
 
 #drag-file-element {
@@ -42,9 +42,9 @@
     right: 0px;
     bottom: 0px;
     left: 0px;
-  }
+}
 
-.upload-form select{
+.upload-form select {
     display: inline-block;
     background-color: #222831;
     width: fit-content;
@@ -52,35 +52,48 @@
     border-radius: 5px;
 }
 
-.upload-form input{
-    background-color: #222831;
-    border: 1px solid #fff;
-}
 
-.upload-form .tag-upload{
+.upload-form .name-upload {
     display: inline-block;
     width: 40%;
     padding: 5px 10px;
     border-radius: 5px;
-    border: 1px solid black;
+    background-color: #222831;
+    border: 1px solid #fff;
 }
 
-.btn{
+.btn {
     width: fit-content;
     padding: 5px 10px;
     border-radius: 21px;
-    border: 1px solid black;
+    border: 1px solid #fff;
     background: none;
 }
 
-.cls-tag-container{
+.cls-tag-container {
     width: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
 }
 
-.cls-tag-container div{
+.cls-tag-container div {
     text-align: center;
     width: 50%;
+}
+
+@media screen and (max-width: 550px) {
+    #label-file-select{
+        height: 30vh;
+        width: 80%;
+    }
+    .upload-form .name-upload {
+        display: block;
+        width: 80%;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #222831;
+        border: 1px solid #fff;
+    }
+
 }
