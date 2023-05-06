@@ -83,10 +83,11 @@
 }
 
 @media screen and (max-width: 550px) {
-    #label-file-select{
+    #label-file-select {
         height: 30vh;
         width: 80%;
     }
+
     .upload-form .name-upload {
         display: block;
         width: 80%;
@@ -95,5 +96,4 @@
         background-color: #222831;
         border: 1px solid #fff;
     }
-
 }

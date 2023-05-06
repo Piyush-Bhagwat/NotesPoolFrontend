@@ -12,6 +12,17 @@ export default function NoteContextProvider(props) {
 
     const bPORT = globalHost;
 
+    const toastSettings =  {
+        position: "bottom-left",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+    };
+
     useEffect(() => {
         if (localStorage.getItem("name")) {
             const userInfo = {
@@ -42,7 +53,8 @@ export default function NoteContextProvider(props) {
         setCurSubject,
         user,
         bPORT,
-        logOut
+        logOut,
+        toastSettings
     };
 
     return (
