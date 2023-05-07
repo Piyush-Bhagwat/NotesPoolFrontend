@@ -14,7 +14,6 @@ const HomePage = () => {
         setCurSubject,
         classOption,
         setClassOption,
-        user,
         bPORT
     } = useContext(noteContext);
 

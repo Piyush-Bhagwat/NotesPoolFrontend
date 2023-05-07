@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./homePage/homepage.css";
+import "../homePage/homepage.css";
 import axios from "axios";
-import AdminCardList from "../components/adminNoteCard";
-import { noteContext } from "../context/noteContext";
+import AdminCardList from "../../components/adminNoteCard";
+import { noteContext } from "../../context/noteContext";
 
 const AdminPage = () => {
     const [notesData, setNotesData] = useState([]);

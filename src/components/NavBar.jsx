@@ -66,7 +66,9 @@ const NavBar = () => {
 
     return (
         <div className="nav-bar">
-            <p className="brand-name">Notes Pool</p>
+            <Link to="/" style={{ textDecoration: "none" }}>
+                <p className="brand-name">Notes Pool</p>
+            </Link>
 
             <div className="subject-select-container desktop">
                 {renderClassOptions()}
@@ -86,10 +88,9 @@ const NavBar = () => {
                         <Link to="/">
                             <i className="fa-regular fa-heart"></i>
                         </Link>
-
-                        <a href="#">
+                        <Link to="/userupload">
                             <i className="fa-regular fa-folder-open"></i>
-                        </a>
+                        </Link>
                     </>
                 )}
 
