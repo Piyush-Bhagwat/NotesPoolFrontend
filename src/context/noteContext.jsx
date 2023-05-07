@@ -40,7 +40,7 @@ export default function NoteContextProvider(props) {
                 res.user.email
             );
         });
-        // window.location.reload();
+        window.location.reload();
     };
 
     useEffect(() => {
