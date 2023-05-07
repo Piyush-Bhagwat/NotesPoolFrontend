@@ -18,7 +18,6 @@ const HomePage = () => {
     } = useContext(noteContext);
 
     useEffect(() => {
-        console.log(classOption, curSubject);
         const getData = async () => {
             var data;
             setLoading(true);
@@ -36,7 +35,6 @@ const HomePage = () => {
     }, [classOption, curSubject]);
 
     const renderNotes = () => {
-        console.log(notesData);
         return (
             <>
                 {notesData.map((note) => {
@@ -107,7 +105,7 @@ const HomePage = () => {
             </div>
 
             
-            <div className="notes">{loading ? <div className="loader"> <PropagateLoader size="15" color="#FFD369" loading={loading}/> </div> : renderNotes()}</div>
+            <div className="notes">{loading ? <div className="loader"> <PropagateLoader size="15px" color="#FFD369" loading={loading}/> </div> : renderNotes()}</div>
         </div>
     );
 };

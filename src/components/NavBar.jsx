@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import subjectList from "../data/classSubjectList";
 import { noteContext } from "../context/noteContext";
-import { loginToGoogle } from "../data/firebase.js";
 import { Link } from "react-router-dom";
 
 import "../assets/stylesheet/navBar.css";
@@ -14,6 +13,7 @@ const NavBar = () => {
         setClassOption,
         user,
         logOut,
+        login,
     } = useContext(noteContext);
 
     const renderClassOptions = () => {
@@ -76,7 +76,7 @@ const NavBar = () => {
             </div>
 
             <button onClick={toogleNav} className="ctrl-btn">
-                <i class="fa-solid fa-bars"></i>
+                <i className="fa-solid fa-bars"></i>
             </button>
             <div className="quickicons" id="links">
                 {user.isLoged && (
@@ -86,7 +86,7 @@ const NavBar = () => {
                         </Link>
 
                         <Link to="/">
-                            <i className="fa-regular fa-heart"></i>
+                            <i className="fa-solid fa-bookmark"></i>
                         </Link>
                         <Link to="/userupload">
                             <i className="fa-regular fa-folder-open"></i>
@@ -99,7 +99,7 @@ const NavBar = () => {
                         <img className="profile-pic" src={user.dp} alt="" />
                     </button>
                 ) : (
-                    <button onClick={loginToGoogle}>
+                    <button onClick={login}>
                         <i className="fa-regular fa-circle-user"></i>
                     </button>
                 )}

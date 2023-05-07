@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { noteContext } from "../context/noteContext";
 import FileIcon from "./fileIcon";
 import { ToastContainer, toast } from "react-toastify";
@@ -6,7 +6,30 @@ import { ToastContainer, toast } from "react-toastify";
 import "../assets/stylesheet/noteCard.css";
 
 const BacisCardList = ({ name, by, on, id, format }) => {
-    const { bPORT, toastSettings } = useContext(noteContext);
+    const [isLiked, setLiked] = useState(false);
+    const { bPORT, toastSettings, addToLike, removeFromLike, savedList } =
+        useContext(noteContext);
+
+    const toggleLike = () => {
+        if (isLiked) {
+            setLiked(false);
+            removeFromLike(id);
+        } else {
+            setLiked(true);
+            addToLike(id);
+        }
+    };
+    
+    useEffect(()=>{
+        savedList.map((li)=>{
+            if(li === id) {
+                setLiked(true);
+            } else {
+                setLiked(false);
+            }
+        })
+    }, []);
+
 
     return (
         <div className="note-li">
@@ -23,12 +46,15 @@ const BacisCardList = ({ name, by, on, id, format }) => {
             </div>
 
             <div className="note-ctrl">
-                <a href={`${bPORT}/api/download?id=${id}`} onClick={() => toast.success("Downloaded", toastSettings)}>
+                <a
+                    href={`${bPORT}/api/download?id=${id}`}
+                    onClick={() => toast.success("Downloaded", toastSettings)}
+                >
                     <i className="fa-solid fa-download"></i>
                 </a>
-                <a href={`${bPORT}/api/download?id=${id}`} download="hi">
-                    <i className="fa-regular fa-heart"></i>
-                </a>
+                <button onClick={toggleLike}>
+                    <i class={`fa-${isLiked ? "solid" :"regular"} fa-bookmark`}></i>
+                </button>
             </div>
             <ToastContainer />
         </div>

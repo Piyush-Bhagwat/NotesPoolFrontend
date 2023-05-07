@@ -17,6 +17,11 @@
     font-size: 0.7em;
 }
 
+.note-li button{
+    background: none;
+    border: none;
+}
+
 .note-info, .note-ctrl{
     display: flex;
     flex-direction: column;

@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
@@ -7,23 +8,20 @@ const firebaseConfig = {
     projectId: "notespool-8c992",
     storageBucket: "notespool-8c992.appspot.com",
     messagingSenderId: "482174397556",
-    appId: "1:482174397556:web:f253f019f64e8e34157521"
-  };
+    appId: "1:482174397556:web:f253f019f64e8e34157521",
+};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 const googleProvider = new GoogleAuthProvider();
 
-const loginToGoogle = async () => {
-    await signInWithPopup(auth, googleProvider).then((res) =>{
-        localStorage.setItem("name", res.user.displayName);
-        localStorage.setItem("email", res.user.email);
-        localStorage.setItem("dpURL", res.user.photoURL);
-        localStorage.setItem("uid", res.user.uid);
-    });
+const loginToGoogle = () => {
+    return signInWithPopup(auth, googleProvider)
 
-    window.location.reload();
+    // window.location.reload();
 };
 
-export { loginToGoogle };
+
+export { loginToGoogle, db };
