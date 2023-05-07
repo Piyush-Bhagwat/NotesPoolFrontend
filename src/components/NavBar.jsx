@@ -85,7 +85,7 @@ const NavBar = () => {
                             <i className="fa-solid fa-upload"></i>
                         </Link>
 
-                        <Link to="/">
+                        <Link to="/savednotes">
                             <i className="fa-solid fa-bookmark"></i>
                         </Link>
                         <Link to="/userupload">

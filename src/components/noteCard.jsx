@@ -24,12 +24,12 @@ const BacisCardList = ({ name, by, on, id, format }) => {
         savedList.map((li)=>{
             if(li === id) {
                 setLiked(true);
-            } else {
-                setLiked(false);
+                return;
             }
         })
-    }, []);
+    }, [savedList]);
 
+    
 
     return (
         <div className="note-li">

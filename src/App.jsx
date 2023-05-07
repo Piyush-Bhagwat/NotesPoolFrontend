@@ -8,6 +8,7 @@ import AdminPage from "./pages/adminPages/adminPage";
 import UploadPage from "./pages/UploadPage/UploadPage";
 import AdminHome from "./pages/adminPages/adminHome";
 import UserUpload from "./pages/userUpload/userUpload";
+import SavedNotes from "./pages/SavedNotes/savedNotes";
 
 function App() {
     return (
@@ -20,8 +21,9 @@ function App() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/upload" element={<UploadPage />} />
                         <Route path="/adminpi" element={<AdminPage />} />
-                        <Route path="/adminpi/home" element={<AdminHome />} />
                         <Route path="/userupload" element={<UserUpload />}/>
+                        <Route path="/savednotes" element={<SavedNotes />}/>
+                        <Route path="/adminpi/home" element={<AdminHome />} />
                     </Routes>
                 </Router>
             </NoteContextProvider>

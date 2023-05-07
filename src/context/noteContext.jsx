@@ -15,7 +15,7 @@ export default function NoteContextProvider(props) {
     const globalHost = "https://notepool-backend.onrender.com";
     const localHost = "http://localhost:4040";
 
-    const bPORT = globalHost;
+    const bPORT = localHost;
 
     const toastSettings = {
         position: "bottom-left",
