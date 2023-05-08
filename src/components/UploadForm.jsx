@@ -19,7 +19,7 @@ const UploadForm = () => {
         format: "",
     });
 
-    const { user, bPORT, toastSettings } = useContext(noteContext);
+    const { user, bPORT, toastSettings, setCurPage } = useContext(noteContext);
 
     const renderClassOptions = () => {
         return (
@@ -106,8 +106,8 @@ const UploadForm = () => {
     }, [data]);
 
     useEffect(() => {
-        console.log(dragActive);
-    }, [dragActive]);
+        setCurPage('upload');
+    }, []);
 
     const dragHandler = (e) => {
         e.preventDefault();

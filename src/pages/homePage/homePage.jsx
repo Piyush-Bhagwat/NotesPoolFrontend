@@ -14,7 +14,8 @@ const HomePage = () => {
         setCurSubject,
         classOption,
         setClassOption,
-        bPORT
+        bPORT,
+        setCurPage
     } = useContext(noteContext);
 
     useEffect(() => {
@@ -33,6 +34,8 @@ const HomePage = () => {
         };
         getData();
     }, [classOption, curSubject]);
+
+    useEffect(()=> setCurPage('home'), []);
 
     const renderNotes = () => {
         return (

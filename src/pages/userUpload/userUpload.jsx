@@ -8,7 +8,7 @@ import "./userUpload.css";
 import { PageTitle } from "../../components/pageTitle";
 
 const UserUpload = () => {
-    const { bPORT, user } = useContext(noteContext);
+    const { bPORT, user, setCurPage } = useContext(noteContext);
     const [data, setData] = useState({ hold: [], uploaded: [] });
     const [loading, setLoading] = useState(false);
 
@@ -28,6 +28,8 @@ const UserUpload = () => {
     }, [user]);
 
     useEffect(() => console.log("userUploadData: ", data), [data]);
+
+    useEffect(() => setCurPage("userUpload"), []);
 
     const renderHoldNotes = () => {
         const onHold = data.hold;
@@ -77,7 +79,7 @@ const UserUpload = () => {
 
     return (
         <div className="user-notes">
-            <PageTitle title="User Upload"/>
+            <PageTitle title="User Upload" />
             {loading && (
                 <div className="loader">
                     <PropagateLoader
