@@ -70,7 +70,7 @@ const NavBar = () => {
                 {renderSubjectOption()}
             </div>
 
-            <div className="quickicons" id="links">
+            <div className="quickicons" style={!user.isLoged ? {justifyContent: "center"} : {}} id="links">
                 {user.isLoged && (
                     <>
                         <Link to="/" onClick={()=>setCurPage("home")} className={"page-link " + (curPage == "home" && "page-active")}>
@@ -95,8 +95,8 @@ const NavBar = () => {
                         <img className="profile-pic" src={user.dp} alt="" />
                     </button>
                 ) : (
-                    <button onClick={login}>
-                        <i className="fa-regular fa-circle-user"></i>
+                    <button onClick={login} className="login-btn">
+                        Login
                     </button>
                 )}
             </div>

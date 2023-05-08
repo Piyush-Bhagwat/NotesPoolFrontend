@@ -53,6 +53,13 @@
     font-size: 1.3em;
 }
 
+.quickicons .login-btn{
+    padding: 2% 4%;
+    background-color: #222831;
+    border-radius: 20px;
+}
+
+
 .quickicons button{
     background: none;
     border: none;
