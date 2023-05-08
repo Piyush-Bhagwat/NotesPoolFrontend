@@ -19,9 +19,25 @@
     text-shadow: 2px 2px 4px #00000063;
 }
 
-.quickicons{
-    width: 15%;
+.page-active{
+    background-color: RGB(34, 40, 49);
+    
+}
+
+.page-link{
+    border-radius: 30px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    transition: 0.4s;
+}
+
+.quickicons{
+    width: 20%;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
     
 }
@@ -34,9 +50,7 @@
 }
 
 .quickicons i{
-    font-size: 1.5em;
-    margin-left:5px;
-
+    font-size: 1.3em;
 }
 
 .quickicons button{
@@ -45,7 +59,7 @@
 }
 
 .profile-pic{
-    width: 2.5em;
+    width: 2.2em;
     border-radius: 50%;
 }
 
@@ -59,6 +73,24 @@
 @media screen and (max-width: 550px){
     .nav-bar{
         padding: 2% 7%;
+        justify-content: center;
+    }
+
+    .quickicons i{
+        font-size: 1em;
+    }
+
+    .profile-pic{
+        width: 2em;
+    }
+
+    .page-active{
+        height: 40px;
+        width: 40px;
+    }
+
+    .brand-name{
+        font-size: 1.1em;
     }
     
     .ctrl-btn{
@@ -68,20 +100,14 @@
 
     .quickicons{
         position: fixed;
-        flex-direction: column;
-        top: 6%;
-        right: -30%;
-        height: 36vh;
-        width: 30vw;
+        bottom: 0;
+        right: 0;
+        height: 8vh;
+        width: 100%;
         padding: 4%;
         align-items: center;
         transition: 0.3s ease;
         background-color: #393E46;
-        border-radius: 0 0 0 15px ;
-    }
-
-    .links-active{
-        right: 0;
     }
 
     .ctrl-btn i{

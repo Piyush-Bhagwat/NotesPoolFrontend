@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, {  useContext, useEffect, useState } from "react";
 import { noteContext } from "../../context/noteContext";
 import FileIcon from "../../components/fileIcon";
 import { ToastContainer, toast } from "react-toastify";
@@ -6,7 +6,29 @@ import { ToastContainer, toast } from "react-toastify";
 import "../../assets/stylesheet/noteCard.css";
 
 const UserUploadNote = ({ name, by, on, id, format, held }) => {
-    const { bPORT, toastSettings } = useContext(noteContext);
+    const [isLiked, setLiked] = useState(false);
+    const { bPORT, toastSettings, addToLike, removeFromLike, savedList } =
+        useContext(noteContext);
+
+    const toggleLike = () => {
+        if (isLiked) {
+            setLiked(false);
+            removeFromLike(id);
+        } else {
+            setLiked(true);
+            addToLike(id);
+        }
+    };
+    
+    useEffect(()=>{
+        savedList.map((li)=>{
+            if(li === id) {
+                setLiked(true);
+                return;
+            }
+        })
+    }, [savedList]);
+
 
     return (
         <div className={"note-li " + (held && "on-held")}>
@@ -33,9 +55,13 @@ const UserUploadNote = ({ name, by, on, id, format, held }) => {
                 {held ? (
                     <div class="color-dot"></div>
                 ) : (
-                    <a href={`${bPORT}/api/download?id=${id}`} download="hi">
-                        <i className="fa-regular fa-heart"></i>
-                    </a>
+                    <button onClick={toggleLike}>
+                        <i
+                            class={`fa-${
+                                isLiked ? "solid" : "regular"
+                            } fa-bookmark`}
+                        ></i>
+                    </button>
                 )}
             </div>
 

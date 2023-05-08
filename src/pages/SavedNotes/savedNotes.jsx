@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { noteContext } from "../../context/noteContext";
 import axios from "axios";
 import BacisCardList from "../../components/noteCard";
-import "./savedNotes.css"
+import "./savedNotes.css";
+import { PageTitle } from "../../components/pageTitle";
 
 const SavedNotes = () => {
     // "http://localhost:4040/api/getsinglenote?id=0mk7R3yI3BHv7kY8HzyQ"
@@ -46,7 +47,12 @@ const SavedNotes = () => {
         );
     };
 
-    return <div className="saved-notes">SavedNote {renderNotes()}</div>;
+    return (
+        <div className="saved-notes">
+            <PageTitle title="Saved Notes" />
+            {renderNotes()}
+        </div>
+    );
 };
 
 export default SavedNotes;
