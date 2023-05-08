@@ -4,6 +4,16 @@
     height: 70vh;
     align-items: center;
     justify-content: space-around;
+    width: 100%;
+}
+
+.file-and-name {
+    width: 100%;
+    height: 22vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
 }
 
 .file-select {
@@ -16,7 +26,7 @@
 }
 
 #label-file-select {
-    height: 10vh;
+    height: 15vh;
     width: 60vw;
     border-radius: 10px;
     padding: 20px;
@@ -52,10 +62,18 @@
     border-radius: 5px;
 }
 
+.subject-class-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 11vh;
+    justify-content: space-between;
+}
+
 
 .upload-form .name-upload {
     display: inline-block;
-    width: 40%;
+    width: 15%;
     padding: 5px 10px;
     border-radius: 5px;
     background-color: #222831;
@@ -82,10 +100,30 @@
     width: 50%;
 }
 
+
+
 @media screen and (max-width: 550px) {
+    .upload-form {
+        display: inline-flex;
+        flex-direction: column;
+        height: 70vh;
+        align-items: flex-start;
+        justify-content: space-around;
+        width: 100%;
+    }
+
     #label-file-select {
-        height: 30vh;
-        width: 80%;
+        height: 16vh;
+        width: 100%;
+    }
+
+    .subject-class-select {
+        align-items: flex-start;
+    }
+
+    .file-and-name {
+        height: 25vh;
+        align-items: flex-start;
     }
 
     .upload-form .name-upload {

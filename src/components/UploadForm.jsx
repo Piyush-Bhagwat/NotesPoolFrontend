@@ -4,6 +4,7 @@ import formData from "form-data";
 import "../assets/stylesheet/form.css";
 import subjectList from "../data/classSubjectList.js";
 import { noteContext } from "../context/noteContext";
+import { isMobile } from "react-device-detect";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -165,6 +166,57 @@ const UploadForm = () => {
                 onDragEnter={dragHandler}
                 onSubmit={onSubmitHandler}
             >
+                <div className="file-and-name">
+                    <label
+                        onClick={onButtonClick}
+                        id="label-file-select"
+                        htmlFor="file-select"
+                        className={dragActive ? "drag-active" : ""}
+                    >
+                        {data.file ? (
+                            <p>File Selected {data.file[0].name}</p>
+                        ) : isMobile ? (
+                            <p>Select File</p>
+                        ) : (
+                            <p>Drag your file here or Click to select</p>
+                        )}
+                    </label>
+                    {dragActive && (
+                        <div
+                            id="drag-file-element"
+                            onDragEnter={dragHandler}
+                            onDragLeave={dragHandler}
+                            onDragOver={dragHandler}
+                            onDrop={dropHandler}
+                        ></div>
+                    )}
+
+                    <input
+                        className="name-upload"
+                        type="text"
+                        onChange={onChangeHandler}
+                        value={data.fileName}
+                        name="fileName"
+                        id="fileName"
+                        placeholder="File Name"
+                    />
+                </div>
+
+                <div className="subject-class-select"> 
+                    <div>
+                        <label htmlFor="class">Class: </label>
+                        {renderClassOptions()}
+                    </div>
+
+                    <div>
+                        <label htmlFor="subject">Subject: </label>
+                        {renderSubjectOption()}
+                    </div>
+                </div>
+
+                <button type="submit" className="submit btn" value="submit">
+                    Upload
+                </button>
                 <input
                     ref={inputRef}
                     className="file-select"
@@ -174,51 +226,6 @@ const UploadForm = () => {
                     accept=".pdf, .docs, .txt"
                     onChange={handleChange}
                 />
-
-                <label
-                    onClick={onButtonClick}
-                    id="label-file-select"
-                    htmlFor="file-select"
-                    className={dragActive ? "drag-active" : ""}
-                >
-                    {data.file ? (
-                        <p>File Selected {data.file[0].name}</p>
-                    ) : (
-                        <p>Drag your file here or Click to select</p>
-                    )}
-                </label>
-                {dragActive && (
-                    <div
-                        id="drag-file-element"
-                        onDragEnter={dragHandler}
-                        onDragLeave={dragHandler}
-                        onDragOver={dragHandler}
-                        onDrop={dropHandler}
-                    ></div>
-                )}
-
-                <div className="cls-tag-container">
-                    <div>
-                        <label htmlFor="class">Class: </label>
-                        {renderClassOptions()}
-                        {renderSubjectOption()}
-                    </div>
-
-                    <div>
-                        <label htmlFor="tags">File Name: </label>
-                        <input
-                            className="name-upload"
-                            type="text"
-                            onChange={onChangeHandler}
-                            value={data.fileName}
-                            name="fileName"
-                            id="fileName"
-                        />
-                    </div>
-                </div>
-                <button type="submit" className="submit btn" value="submit">
-                    Upload
-                </button>
             </form>
             <ToastContainer />
         </div>
