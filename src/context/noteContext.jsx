@@ -19,7 +19,7 @@ export default function NoteContextProvider(props) {
     const bPORT = globalHost;
 
     const toastSettings = {
-        position: "bottom-left",
+        position: "top-left",
         autoClose: 4000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -53,6 +53,11 @@ export default function NoteContextProvider(props) {
                 dp: localStorage.getItem("dpURL"),
                 isLoged: true,
             };
+            checkIfUserExist(
+                localStorage.getItem("uid"),
+                localStorage.getItem("name"),
+                localStorage.getItem("email")
+            );
             setUser(userInfo);
             readSavedList(localStorage.getItem("uid"));
 

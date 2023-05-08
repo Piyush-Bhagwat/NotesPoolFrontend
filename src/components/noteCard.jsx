@@ -7,7 +7,7 @@ import "../assets/stylesheet/noteCard.css";
 
 const BacisCardList = ({ name, by, on, id, format }) => {
     const [isLiked, setLiked] = useState(false);
-    const { bPORT, toastSettings, addToLike, removeFromLike, savedList } =
+    const { bPORT, toastSettings, addToLike, removeFromLike, savedList, user } =
         useContext(noteContext);
 
     const toggleLike = () => {
@@ -52,7 +52,7 @@ const BacisCardList = ({ name, by, on, id, format }) => {
                 >
                     <i className="fa-solid fa-download"></i>
                 </a>
-                <button onClick={toggleLike}>
+                <button onClick={user.isLoged ? toggleLike : () => toast.info("Login To Like", toastSettings)}>
                     <i class={`fa-${isLiked ? "solid" :"regular"} fa-bookmark`}></i>
                 </button>
             </div>

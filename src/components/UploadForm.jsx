@@ -84,7 +84,7 @@ const UploadForm = () => {
             uploading(),
             {
                 pending: "Uploading",
-                success: "Uploaded",
+                success: "Uploaded, check Your Uploads",
             },
             toastSettings
         );
