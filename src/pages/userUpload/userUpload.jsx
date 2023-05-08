@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { noteContext } from "../../context/noteContext";
 import UserUploadNote from "./userUploadNote";
 import PropagateLoader from "react-spinners/PropagateLoader";
+import { Link } from "react-router-dom";
 
 import "./userUpload.css";
 import { PageTitle } from "../../components/pageTitle";
@@ -30,12 +31,13 @@ const UserUpload = () => {
     useEffect(() => console.log("userUploadData: ", data), [data]);
 
     useEffect(() => setCurPage("userUpload"), []);
+    const onHold = data.hold;
 
     const renderHoldNotes = () => {
-        const onHold = data.hold;
 
         return (
             <>
+                
                 {onHold.map((note) => {
                     return (
                         <UserUploadNote
@@ -53,10 +55,11 @@ const UserUpload = () => {
             </>
         );
     };
+    const uploded = data.uploaded;
 
     const renderUploadNotes = () => {
-        const uploded = data.uploaded;
 
+        console.log("someAdd", (onHold.length + uploded.length));
         return (
             <>
                 {uploded.map((note) => {
@@ -77,6 +80,7 @@ const UserUpload = () => {
         );
     };
 
+
     return (
         <div className="user-notes">
             <PageTitle title="User Upload" />
@@ -89,8 +93,10 @@ const UserUpload = () => {
                     />
                 </div>
             )}
+            {(onHold.length + uploded.length) < 1 && <h3>No Files Uploaded, <Link to="/upload">Upload</Link> one Now</h3>}
             {renderHoldNotes()}
             {renderUploadNotes()}
+            
         </div>
     );
 };

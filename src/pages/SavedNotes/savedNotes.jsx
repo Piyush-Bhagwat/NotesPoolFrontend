@@ -31,6 +31,7 @@ const SavedNotes = () => {
     const renderNotes = () => {
         return (
             <div className="notes">
+                {savedNotes.length < 1 && 'No Notes Saved'}
                 {savedNotes.map((note) => {
                     return (
                         <BacisCardList

@@ -5,6 +5,7 @@ import BacisCardList from "../../components/noteCard";
 import { noteContext } from "../../context/noteContext";
 import subjectList from "../../data/classSubjectList";
 import PropagateLoader from "react-spinners/PropagateLoader";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
     const [notesData, setNotesData] = useState([]);
@@ -15,7 +16,8 @@ const HomePage = () => {
         classOption,
         setClassOption,
         bPORT,
-        setCurPage
+        setCurPage,
+        user,
     } = useContext(noteContext);
 
     useEffect(() => {
@@ -35,25 +37,35 @@ const HomePage = () => {
         getData();
     }, [classOption, curSubject]);
 
-    useEffect(()=> setCurPage('home'), []);
+    useEffect(() => setCurPage("home"), []);
+
+    useEffect(() => console.log(notesData), [notesData]);
 
     const renderNotes = () => {
         return (
             <>
+                {notesData.length < 1 &&
+                    !loading &&
+                    (user.isLoged ? (
+                        <h3>
+                            Be first to <Link to="/upload">upload</Link> notes
+                            here
+                        </h3>
+                    ) : (
+                        <h3>No Notes here, Login to Upload</h3>
+                    ))}
                 {notesData.map((note) => {
-                    if (note !== null) {
-                        return (
-                            <BacisCardList
-                                name={note.name}
-                                by={note.userName}
-                                on={note.createdOn}
-                                key={note.id}
-                                id={note.id}
-                                link={note.link}
-                                format={note.format}
-                            />
-                        );
-                    }
+                    return (
+                        <BacisCardList
+                            name={note.name}
+                            by={note.userName}
+                            on={note.createdOn}
+                            key={note.id}
+                            id={note.id}
+                            link={note.link}
+                            format={note.format}
+                        />
+                    );
                 })}
             </>
         );
@@ -107,8 +119,20 @@ const HomePage = () => {
                 {renderSubjectOption()}
             </div>
 
-            
-            <div className="notes">{loading ? <div className="loader"> <PropagateLoader size="15px" color="#FFD369" loading={loading}/> </div> : renderNotes()}</div>
+            <div className="notes">
+                {loading ? (
+                    <div className="loader">
+                        {" "}
+                        <PropagateLoader
+                            size="15px"
+                            color="#FFD369"
+                            loading={loading}
+                        />{" "}
+                    </div>
+                ) : (
+                    renderNotes()
+                )}
+            </div>
         </div>
     );
 };
