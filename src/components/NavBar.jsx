@@ -73,18 +73,18 @@ const NavBar = () => {
             <div className="quickicons" id="links">
                 {user.isLoged && (
                     <>
-                        <Link to="/" onClick={()=>setCurPage("home")} className={curPage == "home" && "page-active"}>
+                        <Link to="/" onClick={()=>setCurPage("home")} className={"page-link " + (curPage == "home" && "page-active")}>
                             <i className="fa-solid fa-house"></i>
                         </Link>
 
-                        <Link to="/upload" onClick={()=>setCurPage("upload")} className={curPage == "upload" && "page-active"}>
+                        <Link to="/upload" onClick={()=>setCurPage("upload")} className={"page-link " + (curPage == "upload" && "page-active")}>
                             <i className="fa-solid fa-upload"></i>
                         </Link>
 
-                        <Link to="/savednotes" onClick={()=>setCurPage("saveNotes")} className={curPage == "saveNotes" && "page-active"}>
+                        <Link to="/savednotes" onClick={()=>setCurPage("saveNotes")} className={"page-link " + (curPage == "saveNotes" && "page-active")}>
                             <i className="fa-solid fa-bookmark"></i>
                         </Link>
-                        <Link to="/userupload" onClick={()=>setCurPage("userUpload")} className={curPage == "userUpload" && "page-active"}>
+                        <Link to="/userupload" onClick={()=>setCurPage("userUpload")} className={"page-link " + (curPage == "userUpload" && "page-active")}>
                             <i className="fa-regular fa-folder-open"></i>
                         </Link>
                     </>
