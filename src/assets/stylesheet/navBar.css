@@ -1,5 +1,4 @@
-
-.nav-bar{
+.nav-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,7 +10,7 @@
     box-shadow: 0px 5px 12px #00000038;
 }
 
-.brand-name{
+.brand-name {
     font-weight: 700;
     letter-spacing: 2px;
     font-size: 1.4em;
@@ -19,12 +18,12 @@
     text-shadow: 2px 2px 4px #00000063;
 }
 
-.page-active{
+.page-active {
     background-color: RGB(34, 40, 49);
-    
+
 }
 
-.page-link{
+.page-link {
     border-radius: 30px;
     display: flex;
     justify-content: center;
@@ -34,78 +33,114 @@
     transition: 0.4s;
 }
 
-.quickicons{
+.quickicons {
     width: 20%;
+    background: #393E46;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    z-index: 100;
 }
 
-.quickicons a{
+.quickicons a {
     color: black;
     text-decoration: none;
-   
+
 
 }
 
-.quickicons i{
+.quickicons i {
     font-size: 1.3em;
 }
 
-.quickicons .login-btn{
+.quickicons .login-btn {
     padding: 2% 4%;
     background-color: #222831;
     border-radius: 20px;
 }
 
+.logout-btn {
+    top: 10px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    position: fixed;
+    right: 4.5%;
+    background: #393e46;
+    padding: 1% 2% 1%;
+    border-radius: 0 0 20px 20px;
+    border: none;
+    transition: all 0.3s cubic-bezier(.47, 1.64, .41, .8);
+}
 
-.quickicons button{
+.show-logout {
+    top: 49px;
+    z-index: 10;
+    pointer-events: all;
+    opacity: 1;
+}
+
+
+.quickicons button {
     background: none;
     border: none;
 }
 
-.profile-pic{
+.profile-pic {
     width: 2.2em;
     border-radius: 50%;
 }
 
-.ctrl-btn{
+.ctrl-btn {
     visibility: hidden;
     pointer-events: none;
     background: none;
     border: none;
 }
 
-@media screen and (max-width: 550px){
-    .nav-bar{
+@media screen and (max-width: 550px) {
+    .nav-bar {
         padding: 2% 7%;
         justify-content: center;
     }
 
-    .quickicons i{
+    .logout-btn {
+        top: unset;
+        bottom: 10px;
+        z-index: 10;
+        right: 6px;
+        padding: 2% 3% 3%;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .show-logout {
+        top: unset;
+        bottom: 49px;
+    }
+
+    .quickicons i {
         font-size: 1em;
     }
 
-    .profile-pic{
+    .profile-pic {
         width: 2em;
     }
 
-    .page-active{
+    .page-active {
         height: 40px;
         width: 40px;
     }
 
-    .brand-name{
+    .brand-name {
         font-size: 1.1em;
     }
-    
-    .ctrl-btn{
+
+    .ctrl-btn {
         visibility: visible;
         pointer-events: all;
     }
 
-    .quickicons{
+    .quickicons {
         position: fixed;
         bottom: 0;
         right: 0;
@@ -117,9 +152,9 @@
         background-color: #393E46;
     }
 
-    .ctrl-btn i{
+    .ctrl-btn i {
         font-size: 1.5em;
     }
 
-    
+
 }

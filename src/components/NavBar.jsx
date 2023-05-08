@@ -59,6 +59,12 @@ const NavBar = () => {
         );
     };
 
+    const toggleLogout = ()=>{
+        const logOutBtn = document.getElementById("logout-btn");
+
+        logOutBtn.classList.toggle("show-logout");
+    }
+
     return (
         <div className="nav-bar">
             <Link to="/" style={{ textDecoration: "none" }}>
@@ -69,29 +75,61 @@ const NavBar = () => {
                 {renderClassOptions()}
                 {renderSubjectOption()}
             </div>
-
-            <div className="quickicons" style={!user.isLoged ? {justifyContent: "center"} : {}} id="links">
+            <button id="logout-btn" onClick={logOut} className="logout-btn">Logout</button>
+            <div
+                className="quickicons"
+                style={!user.isLoged ? { justifyContent: "center" } : {}}
+                id="links"
+            >
                 {user.isLoged && (
                     <>
-                        <Link to="/" onClick={()=>setCurPage("home")} className={"page-link " + (curPage == "home" && "page-active")}>
+                        <Link
+                            to="/"
+                            onClick={() => setCurPage("home")}
+                            className={
+                                "page-link " +
+                                (curPage == "home" && "page-active")
+                            }
+                        >
                             <i className="fa-solid fa-house"></i>
                         </Link>
 
-                        <Link to="/upload" onClick={()=>setCurPage("upload")} className={"page-link " + (curPage == "upload" && "page-active")}>
+                        <Link
+                            to="/upload"
+                            onClick={() => setCurPage("upload")}
+                            className={
+                                "page-link " +
+                                (curPage == "upload" && "page-active")
+                            }
+                        >
                             <i className="fa-solid fa-upload"></i>
                         </Link>
 
-                        <Link to="/savednotes" onClick={()=>setCurPage("saveNotes")} className={"page-link " + (curPage == "saveNotes" && "page-active")}>
+                        <Link
+                            to="/savednotes"
+                            onClick={() => setCurPage("saveNotes")}
+                            className={
+                                "page-link " +
+                                (curPage == "saveNotes" && "page-active")
+                            }
+                        >
                             <i className="fa-solid fa-bookmark"></i>
                         </Link>
-                        <Link to="/userupload" onClick={()=>setCurPage("userUpload")} className={"page-link " + (curPage == "userUpload" && "page-active")}>
+                        <Link
+                            to="/userupload"
+                            onClick={() => setCurPage("userUpload")}
+                            className={
+                                "page-link " +
+                                (curPage == "userUpload" && "page-active")
+                            }
+                        >
                             <i className="fa-regular fa-folder-open"></i>
                         </Link>
                     </>
                 )}
 
                 {user.isLoged ? (
-                    <button onClick={logOut}>
+                    <button onClick={toggleLogout}>
                         <img className="profile-pic" src={user.dp} alt="" />
                     </button>
                 ) : (
