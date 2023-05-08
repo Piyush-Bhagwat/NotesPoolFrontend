@@ -14,6 +14,8 @@ const NavBar = () => {
         user,
         logOut,
         login,
+        curPage,
+        setCurPage,
     } = useContext(noteContext);
 
     const renderClassOptions = () => {
@@ -71,18 +73,18 @@ const NavBar = () => {
             <div className="quickicons" id="links">
                 {user.isLoged && (
                     <>
-                        <Link to="/">
-                        <i className="fa-solid fa-house"></i>
+                        <Link to="/" onClick={()=>setCurPage("home")} className={curPage == "home" && "page-active"}>
+                            <i className="fa-solid fa-house"></i>
                         </Link>
 
-                        <Link to="/upload">
+                        <Link to="/upload" onClick={()=>setCurPage("upload")} className={curPage == "upload" && "page-active"}>
                             <i className="fa-solid fa-upload"></i>
                         </Link>
 
-                        <Link to="/savednotes">
+                        <Link to="/savednotes" onClick={()=>setCurPage("saveNotes")} className={curPage == "saveNotes" && "page-active"}>
                             <i className="fa-solid fa-bookmark"></i>
                         </Link>
-                        <Link to="/userupload">
+                        <Link to="/userupload" onClick={()=>setCurPage("userUpload")} className={curPage == "userUpload" && "page-active"}>
                             <i className="fa-regular fa-folder-open"></i>
                         </Link>
                     </>

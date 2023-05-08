@@ -8,13 +8,8 @@
     padding-top: 5%;
 }
 
-.page-title{
-    width: 100%;
-    text-align: center;
-}
-
 @media screen and (max-width: 550px){
     .user-notes{
-        padding-top: 16%;
+        padding: 16% 7%;
     }
 }

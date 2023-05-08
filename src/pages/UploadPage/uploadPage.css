@@ -1,0 +1,9 @@
+.form-container{
+    padding-top: 5%;
+}
+
+@media screen and (max-width: 550px) {
+    .form-container{
+        padding-top: 15%;
+    }
+}

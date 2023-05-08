@@ -9,8 +9,9 @@ export default function NoteContextProvider(props) {
     const [classOption, setClassOption] = useState("BCA_1");
     const [curSubject, setCurSubject] = useState("all");
     const [savedList, setSavedList] = useState([]);
-
     const [user, setUser] = useState({ isLoged: false });
+    const [curPage, setCurPage] = useState("home");
+
 
     const globalHost = "https://notepool-backend.onrender.com";
     const localHost = "http://localhost:4040";
@@ -132,14 +133,16 @@ export default function NoteContextProvider(props) {
         classOption,
         curSubject,
         savedList,
+        user,
+        toastSettings,
+        bPORT,
+        curPage,
         setClassOption,
         setCurSubject,
-        user,
-        bPORT,
+        setSavedList,
+        setCurPage,
         logOut,
         login,
-        setSavedList,
-        toastSettings,
         addToLike,
         removeFromLike,
     };

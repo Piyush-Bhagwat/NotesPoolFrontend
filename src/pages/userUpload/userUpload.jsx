@@ -5,6 +5,7 @@ import UserUploadNote from "./userUploadNote";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 import "./userUpload.css";
+import { PageTitle } from "../../components/pageTitle";
 
 const UserUpload = () => {
     const { bPORT, user } = useContext(noteContext);
@@ -76,7 +77,7 @@ const UserUpload = () => {
 
     return (
         <div className="user-notes">
-            <div className="page-title"><h2>Your Uploads</h2></div>
+            <PageTitle title="User Upload"/>
             {loading && (
                 <div className="loader">
                     <PropagateLoader

@@ -19,6 +19,16 @@
     text-shadow: 2px 2px 4px #00000063;
 }
 
+.page-active{
+    background-color: RGB(34, 40, 49);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+}
+
 .quickicons{
     width: 20%;
     display: flex;
@@ -36,8 +46,6 @@
 
 .quickicons i{
     font-size: 1.3em;
-    margin-left:5px;
-
 }
 
 .quickicons button{
@@ -61,6 +69,19 @@
     .nav-bar{
         padding: 2% 7%;
         justify-content: center;
+    }
+
+    .quickicons i{
+        font-size: 1em;
+    }
+
+    .profile-pic{
+        width: 2em;
+    }
+
+    .page-active{
+        height: 40px;
+        width: 40px;
     }
 
     .brand-name{
