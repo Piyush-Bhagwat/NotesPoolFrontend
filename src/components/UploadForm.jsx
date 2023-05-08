@@ -62,8 +62,40 @@ const UploadForm = () => {
         );
     };
 
+    const isDataVaild = () => {
+        if(!data.file){
+            toast.error("Select a File", toastSettings);
+            return false;
+        }
+
+        if (["pdf", "txt", "docs"].indexOf(data.format) === -1) {
+            toast.error(
+                `File Format "${data.format}" not suported`,
+                toastSettings
+            );
+            setData({ ...data, file: false, fileName: "" });
+            return false;
+        }
+
+        if (!data.subject) {
+            toast.error("Select Subject", toastSettings);
+            return false;
+        }
+
+        if (data.fileName === "") {
+            toast.error("File Name cant be Empty", toastSettings);
+            return false;
+        }
+
+        return true;
+    };
+
     const onSubmitHandler = async (e) => {
         e.preventDefault();
+        
+        if(!isDataVaild()){
+            return ;
+        }
 
         const form = new formData();
 
@@ -106,7 +138,7 @@ const UploadForm = () => {
     }, [data]);
 
     useEffect(() => {
-        setCurPage('upload');
+        setCurPage("upload");
     }, []);
 
     const dragHandler = (e) => {
@@ -202,7 +234,7 @@ const UploadForm = () => {
                     />
                 </div>
 
-                <div className="subject-class-select"> 
+                <div className="subject-class-select">
                     <div>
                         <label htmlFor="class">Class: </label>
                         {renderClassOptions()}
