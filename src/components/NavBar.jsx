@@ -57,13 +57,6 @@ const NavBar = () => {
         );
     };
 
-    const toogleNav = () => {
-        const navLinks = document.getElementById("links");
-        console.log(navLinks);
-
-        navLinks.classList.toggle("links-active");
-    };
-
     return (
         <div className="nav-bar">
             <Link to="/" style={{ textDecoration: "none" }}>
@@ -75,12 +68,13 @@ const NavBar = () => {
                 {renderSubjectOption()}
             </div>
 
-            <button onClick={toogleNav} className="ctrl-btn">
-                <i className="fa-solid fa-bars"></i>
-            </button>
             <div className="quickicons" id="links">
                 {user.isLoged && (
                     <>
+                        <Link to="/">
+                        <i className="fa-solid fa-house"></i>
+                        </Link>
+
                         <Link to="/upload">
                             <i className="fa-solid fa-upload"></i>
                         </Link>
