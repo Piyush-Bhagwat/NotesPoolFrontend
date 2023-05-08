@@ -63,6 +63,10 @@ const UploadForm = () => {
     };
 
     const isDataVaild = () => {
+        if(!user.isLoged){
+            toast.error("You are not Loged in", toastSettings);
+            return false;
+        }
         if(!data.file){
             toast.error("Select a File", toastSettings);
             return false;
