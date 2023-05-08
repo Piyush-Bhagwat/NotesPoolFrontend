@@ -9,7 +9,7 @@ const UserUploadNote = ({ name, by, on, id, format, held }) => {
     const { bPORT, toastSettings } = useContext(noteContext);
 
     return (
-        <div className="note-li">
+        <div className={"note-li " + (held && "on-held")}>
             <FileIcon type={format} />
             <div className="note-info">
                 <div className="title">
@@ -31,10 +31,7 @@ const UserUploadNote = ({ name, by, on, id, format, held }) => {
                 </a>
 
                 {held ? (
-                    <i
-                        class="fa-solid fa-clock-rotate-left"
-                        style={{ color: "#fbff00" }}
-                    ></i>
+                    <div class="color-dot"></div>
                 ) : (
                     <a href={`${bPORT}/api/download?id=${id}`} download="hi">
                         <i className="fa-regular fa-heart"></i>

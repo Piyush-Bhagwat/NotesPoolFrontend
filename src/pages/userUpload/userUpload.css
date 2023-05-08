@@ -5,5 +5,16 @@
     flex-wrap: wrap;
     width: 100%;
     padding: 2% 7%;
-    padding-top: 10%;
+    padding-top: 5%;
+}
+
+.page-title{
+    width: 100%;
+    text-align: center;
+}
+
+@media screen and (max-width: 550px){
+    .user-notes{
+        padding-top: 16%;
+    }
 }

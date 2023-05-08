@@ -76,6 +76,7 @@ const UserUpload = () => {
 
     return (
         <div className="user-notes">
+            <div className="page-title"><h2>Your Uploads</h2></div>
             {loading && (
                 <div className="loader">
                     <PropagateLoader

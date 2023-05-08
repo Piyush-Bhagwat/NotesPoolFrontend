@@ -1,4 +1,4 @@
-.note-li{
+.note-li {
     display: flex;
     justify-content: space-between;
     width: 30%;
@@ -13,68 +13,98 @@
     box-shadow: 2px 3px 7px #0000005e;
 }
 
-.note-li p{
+.note-li p {
     font-size: 0.7em;
 }
 
-.note-li button{
+.note-li button {
     background: none;
     border: none;
 }
 
-.note-info, .note-ctrl{
+.note-info,
+.note-ctrl {
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-around;
 }
 
-.note-li img{
+.note-ctrl{
+    align-items: center;
+}
+
+.note-li img {
     width: 4em;
     display: inline-block;
     margin-right: 10px;
 }
 
 
-.note-li a{
+.note-li a {
     color: black;
 }
 
-.note-li i{
+.note-li i {
     font-size: 1.5em;
 }
 
-.note-li .title{
-    
+.note-li .title {
+
     width: 100%;
     overflow: hidden;
 }
 
-.note-li .title p{
+.note-li .title p {
     font-size: 1.2em;
     font-weight: 600;
     display: inline-block;
 }
 
-.btn-ctrl{
+.btn-ctrl {
     width: 12%;
     display: flex;
     justify-content: space-between;
 }
 
+.color-dot {
+    background: #fff720;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+    animation: fade-dot 1.2s infinite ease-in-out alternate;
+}
+
+.on-held{
+    outline: 1px solid #fff720 ;
+}
+
+@keyframes fade-dot {
+    from {
+        opacity: 30%;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 100%;
+        transform: scale(1);
+    }
+}
+
 @media screen and (max-width: 550px) {
-    
-    .note-li{
+
+    .note-li {
         width: 100%;
         height: 15vh;
         padding: 3% 5%;
     }
 
-    .note-li .title p{
+    .note-li .title p {
         font-size: 1em;
     }
-    
-    .note-li p{
+
+    .note-li p {
         font-size: 0.5em;
     }
 }
