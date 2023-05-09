@@ -121,12 +121,11 @@ const HomePage = () => {
             <div className="notes">
                 {loading ? (
                     <div className="loader">
-                        {" "}
                         <PropagateLoader
                             size="15px"
                             color="#FFD369"
                             loading={loading}
-                        />{" "}
+                        />
                     </div>
                 ) : (
                     renderNotes()

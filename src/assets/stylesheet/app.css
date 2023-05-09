@@ -31,6 +31,12 @@
     text-align: center;
 }
 
+.page-container {
+    width: 100%;
+    padding: 5% 7%;
+    padding-top: 7%;
+}
+
 @media screen and (max-width: 550px) {
     .desktop {
         visibility: hidden;
@@ -42,6 +48,10 @@
         visibility: visible;
         pointer-events: all;
         position: relative;
+    }
+
+    .page-container {
+        padding: 15% 7%;
     }
 
 }

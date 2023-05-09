@@ -5,7 +5,6 @@ import UserUploadNote from "./userUploadNote";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { Link } from "react-router-dom";
 
-import "./userUpload.css";
 import { PageTitle } from "../../components/pageTitle";
 
 const UserUpload = () => {
@@ -32,10 +31,8 @@ const UserUpload = () => {
     const onHold = data.hold;
 
     const renderHoldNotes = () => {
-
         return (
             <>
-                
                 {onHold.map((note) => {
                     return (
                         <UserUploadNote
@@ -76,9 +73,8 @@ const UserUpload = () => {
         );
     };
 
-
     return (
-        <div className="user-notes">
+        <div className="page-container">
             <PageTitle title="User Upload" />
             {loading && (
                 <div className="loader">
@@ -89,10 +85,15 @@ const UserUpload = () => {
                     />
                 </div>
             )}
-            {(onHold.length + uploded.length) < 1 && <h3>No Files Uploaded, <Link to="/upload">Upload</Link> one Now</h3>}
-            {renderHoldNotes()}
-            {renderUploadNotes()}
-            
+            {onHold.length + uploded.length < 1 && (
+                <h3>
+                    No Files Uploaded, <Link to="/upload">Upload</Link> one Now
+                </h3>
+            )}
+            <div className="notes">
+                {renderHoldNotes()}
+                {renderUploadNotes()}
+            </div>
         </div>
     );
 };

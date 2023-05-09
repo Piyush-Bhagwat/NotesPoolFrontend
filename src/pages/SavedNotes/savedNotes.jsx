@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { noteContext } from "../../context/noteContext";
 import axios from "axios";
 import BacisCardList from "../../components/noteCard";
-import "./savedNotes.css";
 import { PageTitle } from "../../components/pageTitle";
 
 const SavedNotes = () => {
@@ -48,7 +47,7 @@ const SavedNotes = () => {
     };
 
     return (
-        <div className="saved-notes">
+        <div className="page-container">
             <PageTitle title="Saved Notes" />
             {renderNotes()}
         </div>
