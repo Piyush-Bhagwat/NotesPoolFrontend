@@ -24,6 +24,7 @@ const HomePage = () => {
         const getData = async () => {
             var data;
             setLoading(true);
+            console.log("Fletching Data");
             await axios
                 .get(
                     `${bPORT}/api/getdata?cls=${classOption}&subject=${curSubject}`
@@ -38,8 +39,6 @@ const HomePage = () => {
     }, [classOption, curSubject]);
 
     useEffect(() => setCurPage("home"), []);
-
-    useEffect(() => console.log(notesData), [notesData]);
 
     const renderNotes = () => {
         return (

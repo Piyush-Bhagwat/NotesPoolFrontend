@@ -117,14 +117,16 @@ const UploadForm = () => {
 
         const uploading = async () => axios.post(`${bPORT}/api/newpost`, form);
 
-        toast.promise(
+        await toast.promise(
             uploading(),
             {
                 pending: "Uploading",
-                success: "Uploaded, check Your Uploads",
+                success: "Uploaded, Under Review",
             },
             toastSettings
         );
+
+        console.log("File Uploaded");
 
         setData({ file: false, class: "BCA_1", subject: false, fileName: "" });
     };
@@ -136,10 +138,6 @@ const UploadForm = () => {
 
         setData({ ...data, [name]: value });
     };
-
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
 
     useEffect(() => {
         setCurPage("upload");

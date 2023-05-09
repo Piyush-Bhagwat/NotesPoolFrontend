@@ -28,8 +28,6 @@ const UserUpload = () => {
         getData();
     }, [user]);
 
-    useEffect(() => console.log("userUploadData: ", data), [data]);
-
     useEffect(() => setCurPage("userUpload"), []);
     const onHold = data.hold;
 
@@ -58,8 +56,6 @@ const UserUpload = () => {
     const uploded = data.uploaded;
 
     const renderUploadNotes = () => {
-
-        console.log("someAdd", (onHold.length + uploded.length));
         return (
             <>
                 {uploded.map((note) => {

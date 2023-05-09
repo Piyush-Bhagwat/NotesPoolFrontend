@@ -16,8 +16,6 @@ const SavedNotes = () => {
         setCurPage('saveNotes');
     }, []);
 
-    useEffect(() => console.log("savedNotes: ", savedNotes), [savedNotes]);
-
     const getData = async () => {
         setLoading(true);
         await savedList.map(async (noteID) => {
