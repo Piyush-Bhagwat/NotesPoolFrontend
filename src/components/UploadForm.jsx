@@ -14,7 +14,7 @@ const UploadForm = () => {
     const [data, setData] = useState({
         file: false,
         class: "BCA_1",
-        subject: false,
+        subject: "",
         fileName: "",
         format: "",
     });
@@ -50,7 +50,7 @@ const UploadForm = () => {
                 onChange={onChangeHandler}
                 value={data.subject}
             >
-                <option>Select</option>
+                <option value="">Select</option>
                 {curClass.subjects.map((sub, id) => {
                     return (
                         <option value={sub} key={id}>
@@ -81,7 +81,7 @@ const UploadForm = () => {
             return false;
         }
 
-        if (!data.subject) {
+        if (data.subject === "") {
             toast.error("Select Subject", toastSettings);
             return false;
         }
@@ -128,7 +128,7 @@ const UploadForm = () => {
 
         console.log("File Uploaded");
 
-        setData({ file: false, class: "BCA_1", subject: false, fileName: "" });
+        setData({ file: false, class: "BCA_1", subject: "", fileName: "" });
     };
 
     let name, value;
