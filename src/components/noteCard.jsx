@@ -56,7 +56,6 @@ const BacisCardList = ({ name, by, on, id, format }) => {
                     <i class={`fa-${isLiked ? "solid" :"regular"} fa-bookmark`}></i>
                 </button>
             </div>
-            <ToastContainer />
         </div>
     );
 };
