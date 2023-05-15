@@ -53,7 +53,7 @@ const BacisCardList = ({ name, by, on, id, format }) => {
                     <i className="fa-solid fa-download"></i>
                 </a>
                 <button onClick={user.isLoged ? toggleLike : () => toast.info("Login To Like", toastSettings)}>
-                    <i class={`fa-${isLiked ? "solid" :"regular"} fa-bookmark`}></i>
+                    <i className={`fa-${isLiked ? "solid" :"regular"} fa-bookmark`}></i>
                 </button>
             </div>
         </div>

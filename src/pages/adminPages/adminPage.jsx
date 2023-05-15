@@ -3,6 +3,8 @@ import "../homePage/homepage.css";
 import axios from "axios";
 import AdminCardList from "../../components/adminNoteCard";
 import { noteContext } from "../../context/noteContext";
+import {PageTitle} from "../../components/pageTitle";
+
 
 const AdminPage = () => {
     const [notesData, setNotesData] = useState([]);
@@ -28,7 +30,7 @@ const AdminPage = () => {
                     return (
                         <AdminCardList
                             name={note.name}
-                            by="Piyush"
+                            by={note.userName}
                             on={note.createdOn}
                             key={note.id}
                             tags={note.tags}
@@ -41,10 +43,10 @@ const AdminPage = () => {
     };
 
     return (
-        <div>
+        <div className="page-container">
             <h1>Admin Page</h1>
 
-            <h2>Notes to Review</h2>
+            <PageTitle title="Notes to Review" />
 
             <div className="notes">
                 {renderNotes()}

@@ -14,7 +14,7 @@ export default function NoteContextProvider(props) {
 
 
     const globalHost = "https://notepool-backend.onrender.com";
-    const localHost = "http://localhost:4040";
+    const localHost = "http://localhost:10000";
 
     const bPORT = globalHost;
 

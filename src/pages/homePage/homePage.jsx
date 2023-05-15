@@ -27,7 +27,7 @@ const HomePage = () => {
             console.log("Fletching Data");
             await axios
                 .get(
-                    `${bPORT}/api/getdata?cls=${classOption}&subject=${curSubject}`
+                    `${bPORT}/api/getdata?cls=${classOption}&subject=${curSubject}`, {"Access-Control-Allow-Origin": "http://localhost:10000"}
                 )
                 .then((dat) => {
                     data = dat.data;

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import pdfIcon from "../assets/icons/pdf.webp";
 import { noteContext } from "../context/noteContext";
+import "../assets/stylesheet/noteCard.css"
 
 const AdminCardList = ({ name, by, on, id, tags }) => {
     const {bPORT} = useContext(noteContext);
@@ -11,8 +12,6 @@ const AdminCardList = ({ name, by, on, id, tags }) => {
                 <img src={pdfIcon} alt="" />
                 <p>{name}</p>
             </div>
-
-            <p>Tag: {tags}</p>
 
             <div>
                 <p>Uploaded By: {by}</p>
