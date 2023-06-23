@@ -1,6 +1,13 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDocs, collection, doc, getDoc } from "firebase/firestore";
+import { getFirestore, getDocs, collection, doc, getDoc, addDoc } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    deleteObject,
+} from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAPlQPQ9SJY9RkgKD77Na7PLAXOaKIgQAg",
@@ -14,6 +21,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 const dataRef = collection(db, "data");
 const holdRef = collection(db, "hold");
@@ -86,4 +94,37 @@ const userData = async (userID)=>{ //gets all the user upload
     return {hold: dataOnHold, uploaded: dataUploaded};
 }
 
-export { loginToGoogle, db, getData, getSingleNote, userData };
+const addToHold = async (data) => { //Add document to hold collection
+    await addDoc(holdRef, data);
+};
+
+
+const uploadFile = async (file, name, cls, sub, userName, uid, format) => { //Upload file to Storage and Add its info to collections
+    const date = new Date();
+
+    const storageName = date.getTime() + "_" + name.toLowerCase().replace(/\s/g, "_");
+
+    const createdOn = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+
+    const savePath = `/data/${cls}/${sub}/${storageName}`;
+
+    const sourceRef = ref(storage, savePath);
+    await uploadBytes(sourceRef, file);
+    const downloadLink = await getDownloadURL(sourceRef);
+
+    await addToHold({
+        createdOn,
+        name,
+        class: cls,
+        subject: sub,
+        link: downloadLink,
+        userName,
+        uid,
+        format,
+        fileLocation: savePath,
+    });
+
+    console.log(name, "Uploaded");
+};
+
+export { loginToGoogle, db, getData, getSingleNote, userData, uploadFile};

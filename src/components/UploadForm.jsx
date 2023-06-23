@@ -8,6 +8,7 @@ import { isMobile } from "react-device-detect";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { uploadFile } from "../data/firebase";
 
 const UploadForm = () => {
     const [dragActive, setDragActive] = useState(false);
@@ -101,21 +102,14 @@ const UploadForm = () => {
             return ;
         }
 
-        const form = new formData();
-
+        let fname;
         if (data.fileName.split(".").pop() !== data.format) {
-            form.append("fileName", data.fileName + "." + data.format);
+            fname = (data.fileName + "." + data.format);
         } else {
-            form.append("fileName", data.fileName);
+            fname = data.fileName;
         }
-        form.append("data", data.file[0]);
-        form.append("class", data.class);
-        form.append("subject", data.subject);
-        form.append("name", user.name);
-        form.append("uid", user.uid);
-        form.append("format", data.format);
 
-        const uploading = async () => axios.post(`${bPORT}/api/newpost`, form);
+        const uploading = async () => uploadFile(data.file[0], fname, data.class, data.subject, user.name, user.uid, data.format);
 
         await toast.promise(
             uploading(),
