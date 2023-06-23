@@ -6,6 +6,7 @@ import { noteContext } from "../../context/noteContext";
 import subjectList from "../../data/classSubjectList";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { Link } from "react-router-dom";
+import { getData } from "../../data/firebase";
 
 const HomePage = () => {
     const [notesData, setNotesData] = useState([]);
@@ -21,24 +22,30 @@ const HomePage = () => {
     } = useContext(noteContext);
 
     useEffect(() => {
-        const getData = async () => {
+        //To get the Data
+        const readData = async () => {
             var data;
             setLoading(true);
             console.log("Fletching Data");
-            await axios
-                .get(
-                    `${bPORT}/api/getdata?cls=${classOption}&subject=${curSubject}`, {"Access-Control-Allow-Origin": "http://localhost:10000"}
-                )
-                .then((dat) => {
-                    data = dat.data;
-                });
+            // await axios
+            //     .get(
+            //         `${bPORT}/api/getdata?cls=${classOption}&subject=${curSubject}`, {"Access-Control-Allow-Origin": "http://localhost:10000"}
+            //     )
+            await getData(classOption, curSubject).then((dat) => {
+                data = dat;
+            });
             setNotesData(data);
             setLoading(false);
         };
-        getData();
+        readData();
     }, [classOption, curSubject]);
 
-    useEffect(() => setCurPage("home"), []);
+    useEffect(() => {
+        setCurPage("home");
+        axios.get(`${bPORT}/api/start`, {
+            "Access-Control-Allow-Origin": "http://localhost:10000",
+        });
+    }, []);
 
     const renderNotes = () => {
         return (

@@ -30,6 +30,10 @@
     justify-content: space-around;
 }
 
+.note-info{
+    flex-grow: 1;
+}
+
 .note-ctrl{
     align-items: center;
 }

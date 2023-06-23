@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, getDocs, collection } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
@@ -15,13 +15,27 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+const dataRef = collection(db, "data");
+
 const googleProvider = new GoogleAuthProvider();
 
 const loginToGoogle = () => {
     return signInWithPopup(auth, googleProvider)
-
-    // window.location.reload();
 };
 
+const getData = async (cls, sub) => {
+    const data = await getDocs(dataRef);
 
-export { loginToGoogle, db };
+    const notesToSend = data.docs.filter((dat) => {
+        return (
+            dat.data().class === cls &&
+            (dat.data().subject === sub || sub === "all")
+        );
+    });
+   
+    return notesToSend.map((dat) => {
+        return { ...dat.data(), id: dat.id };
+    });
+};
+
+export { loginToGoogle, db, getData };
