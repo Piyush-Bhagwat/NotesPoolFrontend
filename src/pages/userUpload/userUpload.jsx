@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { noteContext } from "../../context/noteContext";
 import UserUploadNote from "./userUploadNote";
@@ -6,6 +5,7 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 import { Link } from "react-router-dom";
 
 import { PageTitle } from "../../components/pageTitle";
+import { userData } from "../../data/firebase";
 
 const UserUpload = () => {
     const { bPORT, user, setCurPage } = useContext(noteContext);
@@ -16,11 +16,10 @@ const UserUpload = () => {
         const getData = async () => {
             setLoading(true);
             var dataGot;
-            await axios
-                .get(`${bPORT}/api/getuseruploads?id=${user.uid}`)
-                .then((dat) => {
-                    dataGot = dat.data;
-                });
+            await userData(user.uid).then((dat) => {
+                dataGot = dat;
+            });
+
             setData(dataGot);
             setLoading(false);
         };

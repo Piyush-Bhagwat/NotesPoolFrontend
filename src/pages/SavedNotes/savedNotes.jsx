@@ -3,24 +3,24 @@ import { noteContext } from "../../context/noteContext";
 import axios from "axios";
 import BacisCardList from "../../components/noteCard";
 import { PageTitle } from "../../components/pageTitle";
+import { getSingleNote } from "../../data/firebase";
 
 const SavedNotes = () => {
-    // "http://localhost:4040/api/getsinglenote?id=0mk7R3yI3BHv7kY8HzyQ"
     const { savedList, bPORT, setCurPage } = useContext(noteContext);
     const [savedNotes, setSavedNotes] = useState([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         getData();
-        setCurPage('saveNotes');
+        setCurPage("saveNotes");
     }, []);
 
     const getData = async () => {
         setLoading(true);
         await savedList.map(async (noteID) => {
-            axios
-                .get(`${bPORT}/api/getsinglenote?id=${noteID}`)
-                .then((note) => setSavedNotes((prev) => [...prev, note.data]));
+            await getSingleNote(noteID).then((note) =>
+                setSavedNotes((prev) => [...prev, note])
+            );
         });
         setLoading(false);
     };
@@ -28,7 +28,7 @@ const SavedNotes = () => {
     const renderNotes = () => {
         return (
             <div className="notes">
-                {savedNotes.length < 1 && 'No Notes Saved'}
+                {savedNotes.length < 1 && "No Notes Saved"}
                 {savedNotes.map((note) => {
                     return (
                         <BacisCardList
